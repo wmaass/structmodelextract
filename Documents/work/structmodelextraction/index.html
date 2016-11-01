@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=2.0">
+
+<!-- 
+<link rel="stylesheet" type="text/css" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+-->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">  
+<link rel="stylesheet" type="text/css" href="styles/table.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+<!-- TODO add manifest here -->
+<link rel="manifest" href="/manifest.json">
+<!-- Add to home screen for Safari on iOS -->
+
+<title>ALL Relations</title>
+
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="header__title">ALL RELATIONS</h1>
+  </header>
+
+  <select name="model" id="markedmodel" onchange="checkdata(this);">
+    <option value="  ">NULL</option>
+    <option value="UTAUT">UTAUT</option>
+    <option value="WIKI">WIKI</option>
+  </select>
+
+
+<script>
+
+var x;
+var paper = "";
+var $paper = "";
+var structvars = [];
+var irg = [];
+var irgSave = [];
+var irgAfterPhase1 = [];
+var tau = [];
+
+function checkdata(marked){
+
+ var marked_value =  marked.value; // store the selected value marked_value 
+  
+  x = document.getElementById("markedmodel");
+  console.log("Marked model: " + x.value);
+  
+if(x.value == "UTAUT"){
+	var $paper = $('.paper');
+	var paper = "Al-Gahtani, Said S., Geoffrey S. Hubona, and Jijie Wang.Information technology (IT) in Saudi Arabia: Culture and the acceptance and use of IT. Information & Management 44.8 (2007): 681-691.";
+
+	 structvars = [
+            { title: "USE" },
+            { title: "EE" },
+            { title: "BI" },
+            { title: "FC" },
+            { title: "SN" },
+            { title: "PE" }
+            ];
+
+	  irg = [
+				[-1,	1.31,	1.32,	1.3	,	1.33,	1.24],
+				[1.29,	-1	,	1.32,	1.34,	1.36,	1.32],
+				[1.37,	1.4	,	-1	,	1.28,	1.39,	1.31],
+				[1.31,	1.48,	1.32,	-1	,	1.36,	1.32],
+				[1.29,	1.36,	1.31,	1.3	,	-1	,	1.32],
+				[1.29,	1.35,	1.27,	1.28,	1.34,	-1	]
+			];
+
+	  irgSave = [
+				[-1,	1.31,	1.32,	1.3	,	1.33,	1.24],
+				[1.29,	-1	,	1.32,	1.34,	1.36,	1.32],
+				[1.37,	1.4	,	-1	,	1.28,	1.39,	1.31],
+				[1.31,	1.48,	1.32,	-1	,	1.36,	1.32],
+				[1.29,	1.36,	1.31,	1.3	,	-1	,	1.32],
+				[1.29,	1.35,	1.27,	1.28,	1.34,	-1	]
+			];
+
+	 irgAfterPhase1;
+
+	 tau = [
+				[0,0,0,0,0,0],
+				[0,0,1,0,0,0],
+				[1,0,0,0,0,0],
+				[1,0,0,0,0,0],
+				[0,0,1,0,0,0],
+				[0,0,1,0,0,0],
+			];
+/*
+
+var results = [
+	[-1,	*,	-,	-,	*,	-],
+	[-,	-1,	1.4,	-,	-,	-],
+	[1.37,	&,	-1,	-,	&,	*],
+	[*,	1.48,	*,	-1,	1.36,	*],
+	[-,	1.36,	1.39,	-,	-1,	-],
+	[*,	*,	-,	-,	*,	-1],
+]
+*/
+
+}
+else
+{
+
+ $paper = $('.paper');
+ paper = "Meseguer Artola,  et al.: Factors that influence the teaching use of Wikipedia in Higher Education. (2014) https://archive.ics.uci.edu/ml/datasets/wiki4HE";
+
+ structvars = [
+            { title: "USE" },
+            { title: "QU" },
+            { title: "PU" },
+            { title: "PEU" },
+            { title: "ENJ" },
+            { title: "BI" },
+            { title: "JR" },
+            { title: "PF" },
+            { title: "BM" },
+            { title: "SA" }       ];
+
+  irg = [
+	[-1, 	1.41,	1.73,	1.39,	1.49,	1.95,	1.48,	1.50,	1.44,	1.32],
+	[1.53,	-1,		1.55,	1.39,	1.52,	1.62,	1.44,	1.44,	1.36,	1.32],
+	[1.62, 	1.41,	-1	,	1.38,	1.55,	1.70,	1.48,	1.46,	1.42,	1.32],
+	[1.4, 	1.36,	1.40,	-1	,	1.58,	1.45,	1.47,	1.47,	1.38,	1.30],
+	[1.43, 	1.35,	1.48,	1.45,	-1	,	1.48,	1.48,	1.43,	1.38,	1.35],
+	[1.72, 	1.39,	1.58,	1.39,	1.45,	-1	,	1.37,	1.49,	1.41,	1.32],
+	[1.39, 	1.28,	1.33,	1.38,	1.41,	1.43,	-1	,	1.46,	1.43,	1.33],
+	[1.41, 	1.29,	1.35,	1.38,	1.42,	1.46,	1.52,	-1	,	1.38,	1.33],
+	[1.46, 	1.31,	1.42,	1.38,	1.46,	1.46,	1.55,	1.43,	-1	,	1.40],
+	[1.42, 	1.30,	1.36,	1.40,	1.47,	1.43,	1.46,	1.49,	1.44,	-1],
+];
+
+	 tau = [
+				[0,0,0,0,0,0,0,0,0,0],
+				[1,0,1,0,1,1,0,0,0,0],
+				[1,0,0,0,0,1,0,0,0,0],
+				[1,0,1,0,0,1,0,0,0,0],
+				[1,0,1,1,0,1,0,0,0,0],
+				[1,0,0,0,0,0,0,0,0,0],
+				[1,1,1,1,1,1,0,1,1,1],
+				[1,0,1,0,0,1,0,0,0,0],
+				[1,1,1,1,1,1,0,1,0,1],
+				[1,1,1,1,1,1,0,1,0,0],
+			];
+  }
+  window.location = 'allrelations.html';
+}
+</script>
