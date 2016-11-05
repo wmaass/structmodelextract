@@ -1,10 +1,17 @@
 var links = [];
+var path = [];
+var circle = [];
+var text = [];
+var rect = [];
+var force, svg;
+var width = 1800,
+    height = 1200;
 
 //-----------------------
 
 $(document).ready(function(){
 
-
+/*
 	var $paper = $('.paper');
 	var paper = "Al-Gahtani, Said S., Geoffrey S. Hubona, and Jijie Wang.Information technology (IT) in Saudi Arabia: Culture and the acceptance and use of IT. Information & Management 44.8 (2007): 681-691.";
 
@@ -45,6 +52,7 @@ $(document).ready(function(){
 				[0,0,1,0,0,0],
 				[0,0,1,0,0,0],
 			];
+*/
 /*
 
 var results = [
@@ -55,11 +63,9 @@ var results = [
 	[-,	1.36,	1.39,	-,	-1,	-],
 	[*,	*,	-,	-,	*,	-1],
 ]
+
+
 */
-/*
-}
-else
-{
 
 var $paper = $('.paper');
 var paper = "Meseguer Artola,  et al.: Factors that influence the teaching use of Wikipedia in Higher Education. (2014) https://archive.ics.uci.edu/ml/datasets/wiki4HE";
@@ -101,19 +107,8 @@ var  irg = [
 				[1,1,1,1,1,1,0,1,0,1],
 				[1,1,1,1,1,1,0,1,0,0],
 			];
-}
-*/
 
-/*	$('#tau').DataTable( {
-    	"order": [],
-    	"columnDefs": [ {
-    		"targets"  : 'no-sort',
-    		"orderable": false,
-    	}],
-        data: tau,
-        columns: structvars,
-    } );
-*/	
+		
 	var tabletau = makeTable(tau, tau.length, 'tau', structvars);
 
 
@@ -123,17 +118,6 @@ var  irg = [
 		return arr.slice();
 	});	
 
-/*
-	$('#irgSave').DataTable( {
-    	"order": [],
-    	"columnDefs": [ {
-    		"targets"  : 'no-sort',
-    		"orderable": false,
-    	}],
-        data: irgSave,
-        columns: structvars,
-    } );
-*/
 	var tableirgsave = makeTable(irgSave, irgSave.length, 'irgSave', structvars);
 
 	var $threshold = $('.threshold');
@@ -173,7 +157,7 @@ var  irg = [
 		return arr.slice();
 	});
 
-	var lobject = new Object();
+var lobject = new Object();
 
 	for (var i = 0; i < irg.length; i++) {
 		for (var j = 0; j < irg.length; j++) {
@@ -195,6 +179,11 @@ var  irg = [
 		};
 	};
 
+	
+var viz2 = visualizeNet();
+
+
+	/* compute exogenous and endogenous nodes */
 	var e = exogenousVars(irg);
 
 	var pathmatrix = [];
@@ -206,29 +195,9 @@ var  irg = [
 
 	console.log("Pathmatrix: " + pathmatrix);
 
-/*
-    $('#irg').DataTable( {
-    	"order": [],
-    	"columnDefs": [ {
-    		"targets"  : 'no-sort',
-    		"orderable": false,
-    	}],
-        data: irg,
-        columns: structvars,
-    } );
-*/
+
 	var tableirg = makeTable(irg, irg.length, 'irg', structvars);
-/*
-        $('#IRGresults').DataTable( {
-    	"order": [],
-    	"columnDefs": [ {
-    		"targets"  : 'no-sort',
-    		"orderable": false,
-    	}],
-        data: IRGresults,
-        columns: structvars,
-    });
-*/
+
 	var tableresults = makeTable(IRGresults, IRGresults.length, 'IRGresults', structvars);
 
 
@@ -388,4 +357,3 @@ var tf = makeTable(falsifiedPaths, maxFalsePath.length, 'falsifiedPathsTable');
 var $PercentVerfiedPaths = $('.PercentVerfiedPaths');
 console.log("Percentage of verfied paths = " + percent);
 document.getElementById("PercentVerfiedPaths").innerHTML = percent;
-

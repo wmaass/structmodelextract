@@ -24,6 +24,18 @@ td {
   font-size: 30px;
 }
 
+.node {
+  cursor: move;
+  fill: #ccc;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node.fixed {
+  fill: #f00;
+}
+
+
 .link {
   fill: none;
   stroke: #666;
@@ -43,6 +55,12 @@ td {
 }
 
 circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+circle.fixed {
   fill: #ccc;
   stroke: #333;
   stroke-width: 1.5px;
