@@ -7,9 +7,16 @@ function TwoDMatrixSum(m){
 	for (var i = 0;  i < m.length; i++) {
 		for (var j = 0; j < m.length; j++) {
 			s+=m[i][j];
-			4
 		};
 	};
+	
+	/* only for WIKI because USE has additional 1 in first column */
+	/* adjust for each model: model complexity constraint */
+	 
+	s = s - 0;
+
+	console.log("Sum IRG values: " + s);
+	
 	return(s);
 }
 
@@ -27,7 +34,12 @@ function SelectRankElement(m,r){
 		};
 		s = l.sort(function(a, b){return b-a});
 	};
-	return(s[r+1]);
+
+	s.forEach(function(e){console.log("IRG: " + e)});
+	
+	console.log("Value of the " + (r-1) + "-th element : " + s[r-1]);
+
+	return(s[r-1]);
 }
 
 function exogenousVars(m){
